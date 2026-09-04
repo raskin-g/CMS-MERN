@@ -4,7 +4,7 @@ import user from "../../assets/image/user.jpg"
 
 export default function UserDashboardLayout() {
     return(
-    <section className="w-full min-h-screen flex gap-2 bg-gray-100">
+    <section className="w-full min-h-screen flex bg-gray-100">
         <aside className="justify-between border-b border-b-black/10 bg-white w-16 lg:w-80
         sticky flex-col shrink-0 border-r border-black/10
         px-4 py-8 transition-[width] duration-300">

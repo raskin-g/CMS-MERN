@@ -21,19 +21,7 @@ export default function AuthLayout(){
                         </div>
                     </div>
                     <div className="w-full h-[80vh] flex flex-col gap-5 px-5 top-25 relative">
-                        <PageTitle2 title="Sign In" className="text-teal-900"/>
-        
                         <Outlet />
-                        
-                        <p className="text-lg font-semibold text-center">OR</p>
-        
-                        <div className="w-full">
-                            <a href="/register" className="w-full flex justify-center items-center p-2 rounded-full border border-teal-800 text-teal-700 hover:bg-teal-150 hover:scale-102 transition duration-300">
-                                Create An Account
-                            </a>
-        
-                        </div>
-        
                     </div>
                 </div>
             </section>
