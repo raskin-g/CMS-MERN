@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     { path: "/", Component: AuthLayout, children:[
         {index: true, Component:LoginPage},
         {path: "forget-password", Component:ForgetPassword},
-        { path: "/register", Component:CreateAccount}
+        { path: "register", Component:CreateAccount}
     ]},
     { path: "/dashboard", Component:UserDashboardLayout, children: [
         {index: true, Component:UserDashboard},

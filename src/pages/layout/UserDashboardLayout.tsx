@@ -1,6 +1,7 @@
 import { Outlet } from "react-router"
 import logo from "../../assets/image/logo.jpg"
 import user from "../../assets/image/user.jpg"
+import { Icon } from "@iconify/react"
 
 export default function UserDashboardLayout() {
     return(
@@ -18,9 +19,9 @@ export default function UserDashboardLayout() {
                     </a>
                 </div>
                 <nav className="flex flex-col gap-1">
-                    <a href="/dashboard" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50">Dashboard</a>
-                    <a href="/dashboard/category" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50">Category</a>
-                    <a href="/logout" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50">Logout</a>
+                    <a href="/dashboard" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50"><Icon icon={"ant-design:dashboard-filled"}/>Dashboard</a>
+                    <a href="/dashboard/category" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50"><Icon icon={"carbon:category"}/>Category</a>
+                    <a href="/logout" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50"><Icon icon={"carbon:logout"}/>Logout</a>
                 </nav>
             </div>
         </aside>
