@@ -1,5 +1,7 @@
 import { InputComponent } from "../ui/form/Input";
 import { useState, type BaseSyntheticEvent } from "react";
+import { Icon } from "@iconify/react";
+import { NavLink } from "react-router";
 
 export const LoginForm = () =>{
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -51,11 +53,11 @@ export const LoginForm = () =>{
                     </div>
                     
                     <div className="w-full flex items-center justify-end">
-                        <a className="text-sm text-teal-800 italic underline hover:scale-102 transition duration-300" href="/forget-password">Forget Password?</a>
+                        <NavLink className="text-sm text-teal-800 italic underline hover:scale-102 transition duration-300" to="/forget-password">Forget Password?</NavLink>
                     </div>
 
                     <div className="w-full flex gap-3 items-center">
-                        <button disabled={isSubmitting} className="disabled:cursor-not-allowed disabled:bg-red-900/50 w-full p-2 rounded-lg text-white font-semibold bg-red-800 hover:bg-red-900 hover:cursor-pointer hover:scale-102 transition duration-300" type="reset">Cancel</button>
+                        <button disabled={isSubmitting} className="disabled:cursor-not-allowed disabled:bg-red-900/50 w-full p-2 rounded-lg text-white font-semibold bg-red-800 hover:bg-red-900 hover:cursor-pointer hover:scale-102 transition duration-300" type="reset"><Icon icon={"ant-design:redo-outlined"}/>Cancel</button>
                         <button disabled={isSubmitting} className="disabled:cursor-not-allowed disabled:bg-teal-900/50 w-full p-2 rounded-lg text-white font-semibold bg-teal-800 hover:bg-teal-900 hover:cursor-pointer hover:scale-102 transition duration-300" type="submit">Submit</button>
 
                     </div>

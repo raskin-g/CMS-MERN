@@ -20,9 +20,9 @@ export default function AuthLayout(){
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-[80vh] flex flex-col gap-5 px-5 top-25 relative">
+                    
                         <Outlet />
-                    </div>
+                    
                 </div>
             </section>
     )

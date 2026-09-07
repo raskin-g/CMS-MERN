@@ -1,9 +1,11 @@
 import { InputComponent } from "../../components/ui/form/Input"
 import { useState, type BaseSyntheticEvent } from "react";
 import { PageTitle2 } from "../../components/ui/typography/Title";
+import { Icon } from "@iconify/react";
+import { NavLink } from "react-router";
 
 export default function LoginPage() {
-     const [isSubmitting, setIsSubmitting] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const [credentials, setCredentials] = useState({
         username: "",
@@ -30,7 +32,7 @@ export default function LoginPage() {
         console.log(credentials)
     }
     return(
-        <section className="flex flex-col gap-5 px-5 top-25 relative">
+        <section className="w-full h-[80vh] flex flex-col gap-5 px-5 top-25 relative">
             <PageTitle2 title="Sign In" className="text-teal-900"/>
                 <form onSubmit={submitHandle} className="flex flex-col w-full gap-5">
                             <div className="w-full flex items-center">
@@ -52,12 +54,12 @@ export default function LoginPage() {
                             </div>
                             
                             <div className="w-full flex items-center justify-end">
-                                <a className="text-sm text-teal-800 italic underline hover:scale-102 transition duration-300" href="/forget-password">Forget Password?</a>
+                                <NavLink className="text-sm text-teal-800 italic underline hover:scale-102 transition duration-300" to="/forget-password">Forget Password?</NavLink>
                             </div>
         
                             <div className="w-full flex gap-3 items-center">
-                                <button disabled={isSubmitting} className="disabled:cursor-not-allowed disabled:bg-red-900/50 w-full p-2 rounded-lg text-white font-semibold bg-red-800 hover:bg-red-900 hover:cursor-pointer hover:scale-102 transition duration-300" type="reset">Cancel</button>
-                                <button disabled={isSubmitting} className="disabled:cursor-not-allowed disabled:bg-teal-900/50 w-full p-2 rounded-lg text-white font-semibold bg-teal-800 hover:bg-teal-900 hover:cursor-pointer hover:scale-102 transition duration-300" type="submit">Submit</button>
+                                <button disabled={isSubmitting} className="disabled:cursor-not-allowed disabled:bg-red-900/50 w-full p-2 rounded-lg text-white font-semibold bg-red-800 hover:bg-red-900 hover:cursor-pointer hover:scale-102 transition duration-300 flex gap-2 items-center justify-center" type="reset"><Icon icon={"ant-design:redo-outlined"}/>Cancel</button>
+                                <button disabled={isSubmitting} className="disabled:cursor-not-allowed disabled:bg-teal-900/50 w-full p-2 rounded-lg text-white font-semibold bg-teal-800 hover:bg-teal-900 hover:cursor-pointer hover:scale-102 transition duration-300 flex gap-2 items-center justify-center" type="submit"><Icon icon={"boxicons:send"}/>Submit</button>
         
                             </div>
                             
@@ -65,9 +67,9 @@ export default function LoginPage() {
                         <p className="text-lg font-semibold text-center">OR</p>
         
                         <div className="w-full">
-                            <a href="/register" className="w-full flex justify-center items-center p-2 rounded-full border border-teal-800 text-teal-700 hover:bg-teal-150 hover:scale-102 transition duration-300">
+                            <NavLink to="/register" className="w-full flex justify-center items-center p-2 rounded-full border border-teal-800 text-teal-700 hover:bg-teal-150 hover:scale-102 transition duration-300">
                                 Create An Account
-                            </a>
+                            </NavLink>
         
                         </div>
                         

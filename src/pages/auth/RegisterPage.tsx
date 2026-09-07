@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 import { InputComponent } from "../../components/ui/form/Input";
 import { PageTitle2 } from "../../components/ui/typography/Title";
 import { useState, type BaseSyntheticEvent } from "react";
@@ -37,7 +38,7 @@ export default function CreateAccount(){
             }, 1500)
         }
     return(
-            <div className="flex flex-col gap-5 px-5 top-25 relative">
+            <div className="w-full h-[80vh] flex flex-col gap-5 px-5 top-25 relative">
                 <PageTitle2 title="Create Account" className="mb-6 text-teal-900" />
     
                 <form onSubmit={submitHandle} className="flex flex-col w-full gap-5">
@@ -78,9 +79,9 @@ export default function CreateAccount(){
                 <p className="text-lg font-semibold text-center">OR</p>
 
                 <div className="w-full">
-                            <a href="/" className="w-full flex justify-center items-center p-2 rounded-full border border-teal-800 text-teal-700 hover:bg-teal-150 hover:scale-102 transition duration-300">
+                            <NavLink to="/" className="w-full flex justify-center items-center p-2 rounded-full border border-teal-800 text-teal-700 hover:bg-teal-150 hover:scale-102 transition duration-300">
                                 Login
-                            </a>
+                            </NavLink>
         
                         </div>
             </div>
