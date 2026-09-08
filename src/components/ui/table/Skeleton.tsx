@@ -9,7 +9,7 @@ export default function TableRowSkeleton({rows,cols}: Readonly<{rows:number, col
                     {
                         [...Array(cols)].map((_, j: number)=>{
                             return(
-                                <td key={`cols-${j}`} className="p-4 border border-gray border-gray-700">
+                                <td key={`cols-${j}`} className="p-4 border border-teal border-teal-700">
                                     <p className="h-2 w-full rounded-full bg-gray-400 animate-pulse"></p>
                                 </td>
 

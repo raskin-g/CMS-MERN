@@ -5,25 +5,25 @@ import {Icon} from "@iconify/react"
 export default function CategoryList(){
     return(<>
     <div className="w-full flex justify-between">
-        <PageTitle2 title="Categories List"></PageTitle2>
+        <PageTitle2 title="Categories List" className="text-teal-900"></PageTitle2>
         <div className="flex w-1/2 gap-3">
             <form action="" className="w-2/3 justify-end">
                 <input type="search" placeholder="Enter your keyword to search " className="px-5 border rounded-full border-teal-500 w-full p-2"></input>
             </form>
-            <NavLink to="/dashboard/category-create" className="w-1/3 p-2 px-10 text-center rounded-full cursor-pointer hover:bg-teal-950 transition duration-300 hover:scale-102 bg-teal-900 text-white">
-                Add Category
+            <NavLink to="/dashboard/category-create" className="flex items-center justify-center gap-3 w-1/3 p-2 px-8 text-center rounded-full cursor-pointer hover:bg-teal-950 transition duration-300 hover:scale-102 bg-teal-900 text-white">
+                <Icon icon={"carbon:category-new"} width={24} />Add Category
             </NavLink>
         </div>
     </div>
     <div className="w-full flex flex-col gap-5 my-5">
         <table>
-            <thead className="bg-gray-950 text-white">
+            <thead className="bg-teal-900 text-white">
                 <tr>
-                    <th className="p-4 boder-r border-r-gray-700">Name</th>
-                    <th className="p-4 boder-r border-r-gray-700">Url</th>
-                    <th className="p-4 boder-r border-r-gray-700">Icon/Image</th>
-                    <th className="p-4 boder-r border-r-gray-700">Status</th>
-                    <th className="p-4 boder-r border-r-gray-700">Action</th>
+                    <th className="p-4 border-r border-r-teal-700">Name</th>
+                    <th className="p-4 border-r border-r-teal-700">Url</th>
+                    <th className="p-4 border-r border-r-teal-700">Icon/Image</th>
+                    <th className="p-4 border-r border-r-teal-700">Status</th>
+                    <th className="p-4 border-r border-r-teal-700">Action</th>
                 </tr>
             </thead>
             <tbody>

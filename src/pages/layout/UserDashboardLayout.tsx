@@ -19,9 +19,15 @@ export default function UserDashboardLayout() {
                     </NavLink>
                 </div>
                 <nav className="flex flex-col gap-1">
-                    <NavLink to="/dashboard" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50"><Icon icon={"ant-design:dashboard-filled"}/>Dashboard</NavLink>
-                    <NavLink to="/dashboard/category" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50"><Icon icon={"carbon:category"}/>Category</NavLink>
-                    <NavLink to="/logout" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50"><Icon icon={"carbon:logout"}/>Logout</NavLink>
+                    <NavLink to="/dashboard" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50 shadow">
+                        <Icon icon={"ant-design:dashboard-filled"} width={24} />Dashboard
+                    </NavLink>
+                    <NavLink to="/dashboard/category" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50 shadow">
+                        <Icon icon={"carbon:category"} width={24} />Category
+                    </NavLink>
+                    <NavLink to="/logout" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors text-zinc-600 hover:bg-black/40 hover:text-white bg-zinc-50 shadow">
+                        <Icon icon={"carbon:logout"} width={24} />Logout
+                    </NavLink>
                 </nav>
             </div>
         </aside>
