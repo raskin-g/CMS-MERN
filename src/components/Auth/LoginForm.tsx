@@ -1,54 +1,45 @@
 import { InputComponent } from "../ui/form/Input";
-import { useState, type BaseSyntheticEvent } from "react";
 import { Icon } from "@iconify/react";
+import { useForm } from "react-hook-form";
 import { NavLink } from "react-router";
+import { FormLabel } from "../ui/form/Label";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "../ui/button/Button";
+
+const LoginDTO = z.object({
+    username: z.string().min(4, "Username must have at least 4 characters").max(30, "Username must not exceed 30 characters"),
+    password: z.string().min(8, "Password must have at least 8 characters").max(32, "Password must not exceed 32 characters")
+});
+
+export type CredentialsType = z.infer<typeof LoginDTO>
 
 export const LoginForm = () =>{
-    const [isSubmitting, setIsSubmitting] = useState(false)
+    const {control, handleSubmit, formState: {isSubmitting, errors}} = useForm({
+        defaultValues: {username: "", password:""},
+        resolver: zodResolver(LoginDTO)
+    })
 
-    const [credentials, setCredentials] = useState({
-        username: "",
-        password: ""
-    });
-    const handleInputChange = (e: BaseSyntheticEvent)=>{
-                                const {name, value}=e.target
-                                setCredentials({
-                                    ...credentials,
-                                    [name]: value
-                                })
-                            }
+    const submitHandle = (data: CredentialsType) => {
+        console.log(data)
+    };
 
-    const submitHandle = (e: BaseSyntheticEvent) => {
-        e.preventDefault()
-        setIsSubmitting(true);
-        //API CALL
-            // response setIsSubmitting(false)
-        setTimeout(()=>{
-            console.log("API CALLLED");
-            setIsSubmitting(false)
-        },2000);
-
-        console.log(credentials)
-    }
+    console.log(errors)
 
 
     return(
-        <form onSubmit={submitHandle} className="flex flex-col w-full gap-5">
+        <form onSubmit={handleSubmit(submitHandle)} className="flex flex-col w-full gap-5">
                             <div className="w-full flex items-center">
-                                <label htmlFor="username" className="w-1/3 text-lg font-semibold">
-                                    Username:
-                                </label>
+                                <FormLabel htmlFor="username">Username: </FormLabel>
                                 <div className="w-2/3">
-                                    <InputComponent type="text" onChange={handleInputChange} name="username" placeholder="Enter your Username ..."/>
+                                    <InputComponent type="text" control={control} name="username" placeholder="Enter your Username ..." errMsg={errors?.username?.message}/>
                                 </div>
                             </div>
                             
                             <div className="w-full flex items-center">
-                                <label htmlFor="username" className="w-1/3 text-lg font-semibold">
-                                    Password:
-                                </label>
+                                <FormLabel htmlFor="password">Password: </FormLabel>
                                 <div className="w-2/3">
-                                    <InputComponent type="text" onChange={handleInputChange} name="password" placeholder="Enter your Password ..."/>
+                                    <InputComponent type="password" control={control} name="password" placeholder="Enter your Password ..." errMsg={errors?.password?.message}/>
                                 </div>
                             </div>
                             
@@ -56,11 +47,10 @@ export const LoginForm = () =>{
                                 <NavLink className="text-sm text-teal-800 italic underline hover:scale-102 transition duration-300" to="/forget-password">Forget Password?</NavLink>
                             </div>
         
-                            <div className="w-full flex gap-3 items-center">
-                                <button disabled={isSubmitting} className="disabled:cursor-not-allowed disabled:bg-red-900/50 w-full p-2 rounded-lg text-white font-semibold bg-red-800 hover:bg-red-900 hover:cursor-pointer hover:scale-102 transition duration-300 flex gap-2 items-center justify-center" type="reset"><Icon icon={"ant-design:redo-outlined"}/>Cancel</button>
-                                <button disabled={isSubmitting} className="disabled:cursor-not-allowed disabled:bg-teal-900/50 w-full p-2 rounded-lg text-white font-semibold bg-teal-800 hover:bg-teal-900 hover:cursor-pointer hover:scale-102 transition duration-300 flex gap-2 items-center justify-center" type="submit"><Icon icon={"boxicons:send"}/>Submit</button>
-        
-                            </div>
+                            <div className="w-full flex flex-col gap-3 lg:flex-row lg:items-center">
+                                <Button type="reset" disabled={isSubmitting}><Icon icon={"fa7-solid:undo"} width={20} />Cancel</Button>
+                                <Button type="submit" disabled={isSubmitting}><Icon icon={"fa7-solid:paper-plane"} width={20} />Submit</Button>
+                             </div>
                             
                         </form>
     )

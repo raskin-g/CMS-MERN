@@ -4,7 +4,7 @@ import RegisterForm from "../../components/Auth/RegisterForm";
 
 export default function CreateAccount(){
     return(
-            <div className="w-full h-[80vh] flex flex-col gap-5 px-5 top-20 relative">
+            <div className="w-full h-[90vh] flex flex-col gap-5 px-5 top-20 relative">
                 <PageTitle2 title="Create Account" className="mb-6 text-teal-900" />
     
                 <RegisterForm />
