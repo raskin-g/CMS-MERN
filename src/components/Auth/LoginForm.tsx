@@ -1,11 +1,13 @@
 import { InputComponent } from "../ui/form/Input";
 import { Icon } from "@iconify/react";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { FormLabel } from "../ui/form/Label";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui/button/Button";
+import axiosService from "../../lib/services/api.service";
+import { toast } from "sonner";
 
 const LoginDTO = z.object({
     username: z.string().min(4, "Username must have at least 4 characters").max(30, "Username must not exceed 30 characters"),
@@ -19,9 +21,23 @@ export const LoginForm = () =>{
         defaultValues: {username: "", password:""},
         resolver: zodResolver(LoginDTO)
     })
+    const navigate = useNavigate();
 
-    const submitHandle = (data: CredentialsType) => {
-        console.log(data)
+    const submitHandle = async (data: CredentialsType) => {
+        try{
+            const response = await axiosService.post("/auth/login",data, {
+                withCredentials: true
+            });
+            toast.success("Login success!", {
+                description:`Welcome to user panel, ${response?.firstName}! Access to the service from sidebar.`,
+            })
+            navigate('/dashboard')
+        }catch(exception){
+            toast.error("Login failed!!!", {
+                description:exception.data.message
+            })
+            console.log(exception)
+        }
     };
 
     console.log(errors)

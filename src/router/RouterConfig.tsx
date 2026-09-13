@@ -9,7 +9,7 @@ import AuthLayout from "../pages/layout/AuthLayout"
 import NotFound from "../pages/errors/NotFound"
 import { NotFoundComponent } from "../components/ui/errors/NotFound"
 import CategoryCreate from "../pages/dashboard/category/Category-create"
-
+import {Toaster} from "sonner"
 
 const router = createBrowserRouter([
     { path: "/", Component: AuthLayout, children:[
@@ -27,8 +27,9 @@ const router = createBrowserRouter([
 ])
 
 const RouterConfig = () => {
-    return(
-        <RouterProvider router={router}/>
+    return(<>
+    <Toaster closeButton richColors />
+        <RouterProvider router={router}/></>
     )
 }
 
