@@ -10,6 +10,7 @@ import NotFound from "../pages/errors/NotFound"
 import { NotFoundComponent } from "../components/ui/errors/NotFound"
 import CategoryCreate from "../pages/dashboard/category/Category-create"
 import {Toaster} from "sonner"
+import { AuthProvider } from "../lib/context/providers/AuthProvider"
 
 const router = createBrowserRouter([
     { path: "/", Component: AuthLayout, children:[
@@ -27,9 +28,13 @@ const router = createBrowserRouter([
 ])
 
 const RouterConfig = () => {
-    return(<>
-    <Toaster closeButton richColors />
-        <RouterProvider router={router}/></>
+    return(
+    <>
+        <AuthProvider>
+            <Toaster closeButton richColors />
+            <RouterProvider router={router}/>
+        </AuthProvider>
+    </>
     )
 }
 

@@ -2,8 +2,10 @@ import { NavLink, Outlet } from "react-router"
 import logo from "../../assets/image/logo.jpg"
 import user from "../../assets/image/user.jpg"
 import { Icon } from "@iconify/react"
+import { useAuth } from "../../lib/hook/useAuth"
 
 export default function UserDashboardLayout() {
+    const {loggedInUser} = useAuth()
     return(
     <section className="w-full min-h-screen flex bg-gray-100">
         <aside className="justify-between border-b border-b-black/10 bg-white w-16 lg:w-80
@@ -15,7 +17,7 @@ export default function UserDashboardLayout() {
                         <img src={logo} className="size-20 rounded-full"/>
                     </NavLink>
                     <NavLink to="/dashboard/profile">
-                    <h1>Raskin Ghimire</h1>
+                    <h1>{loggedInUser?.firstName + " "+ loggedInUser?.lastName}</h1>
                     </NavLink>
                 </div>
                 <nav className="flex flex-col gap-1">
@@ -36,11 +38,11 @@ export default function UserDashboardLayout() {
                 <div className="flex flex-3 justify-end items-center">
                     <NavLink to="/dashboard/profile" className="flex gap-3 items-center">
                         <div className="size-15">
-                            <img src={user} className="w-full rounded-full aspect-square object-cover" />
+                            <img src={loggedInUser?.image} className="w-full rounded-full aspect-square object-cover" />
                         </div>
                         <div className="flex flex-col w-full h-auto justify-center ">
-                            <h2 className="text-normal font-semibold text-shadow-md">Raskin Ghimire</h2>
-                            <span className="text-xs italic tracking-tight">mern.raskin@gmail.com</span>
+                            <h2 className="text-normal font-semibold text-shadow-md">{loggedInUser?.firstName + " "+ loggedInUser?.lastName}</h2>
+                            <span className="text-xs italic tracking-tight">{loggedInUser?.email}</span>
                         </div>
                     </NavLink>
                 </div>
