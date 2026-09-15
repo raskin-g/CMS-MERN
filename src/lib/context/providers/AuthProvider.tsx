@@ -1,12 +1,12 @@
-import { useState, type ReactNode } from "react"
-import { AuthContext, type IUserDetail } from "../AuthContext"
-import type { CredentialsType } from "../../../components/Auth/LoginForm"
+import { use, useEffect, useState, type ReactNode } from "react"
+import { type IUserDetail, type CredentialsType} from "../../types/AuthContract"
 import axiosService from "../../services/api.service"
 import Cookies from "js-cookie"
+import { AuthContext } from "../AuthContext"
 
 export const AuthProvider = ({children}: Readonly<{children: ReactNode}>) => {
     const [loggedInUser, setLoggedInUser] = useState<null|IUserDetail>(null)
-    const [loading, setLoading] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(true)
 
     const login = async (cred: CredentialsType) => {
         // setLoading(true)
@@ -34,8 +34,22 @@ export const AuthProvider = ({children}: Readonly<{children: ReactNode}>) => {
         return userDetail
         }catch(exception){
             console.log({exception})
-        }      
+        }  finally {
+            setLoading(false)
+        }    
     }
+
+    useEffect(()=>{
+        return ()=>{
+            setLoading(true)
+            const token = Cookies.get('at')
+            if(token){
+                getLoggedInUser()
+            } else {
+                setLoading(false)
+            }
+        }
+    },[])
 
     return(
         loading ? "Loading..." : 

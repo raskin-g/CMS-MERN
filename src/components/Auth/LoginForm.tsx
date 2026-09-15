@@ -3,19 +3,13 @@ import { Icon } from "@iconify/react";
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router";
 import { FormLabel } from "../ui/form/Label";
-import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui/button/Button";
-import axiosService from "../../lib/services/api.service";
 import { toast } from "sonner";
 import { useAuth } from "../../lib/hook/useAuth";
+import  {LoginDTO, type CredentialsType} from "../../lib/types/AuthContract"
 
-const LoginDTO = z.object({
-    username: z.string().min(4, "Username must have at least 4 characters").max(30, "Username must not exceed 30 characters"),
-    password: z.string().min(8, "Password must have at least 8 characters").max(32, "Password must not exceed 32 characters")
-});
 
-export type CredentialsType = z.infer<typeof LoginDTO>
 
 export const LoginForm = () =>{
     const {control, handleSubmit, formState: {isSubmitting, errors}} = useForm({
